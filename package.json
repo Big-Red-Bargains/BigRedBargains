@@ -1,0 +1,16 @@
+{
+  "name": "BigRedBargains",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "https://github.com/arthivjkumar/BigRedBargains.git",
+  "author": "Kayla <kln47@cornell.edu>",
+  "license": "MIT",
+  "scripts": {
+    "start": "concurrently \"yarn server\" \"yarn client\"",
+    "server": "cd server && yarn dev",
+    "client": "cd client && yarn start"
+  },
+  "dependencies": {
+    "concurrently": "^8.2.2"
+  }
+}

@@ -1,0 +1,58 @@
+# Node.js
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Logs
+logs/
+*.log
+*.log.*
+
+# dotenv environment variables file
+.env
+
+# Build and dependency directories
+dist/
+build/
+.DS_Store
+
+# Dependency directories for both client and server
+client/node_modules/
+server/node_modules/
+
+# MacOS and Linux system files
+.DS_Store
+*.swp
+
+# IDEs and editors
+.vscode/
+.idea/
+*.suo
+*.ntvs*
+*.njsproj
+*.sln
+*.sw?
+
+# React specific
+client/build/
+client/.env.local
+client/.env.development.local
+client/.env.test.local
+client/.env.production.local
+
+# Service worker
+client/node_modules/workbox-*
+
+# Optional npm cache directory
+.npm/
+
+# Coverage directory used by tools like istanbul
+coverage/
+
+# TypeScript cache
+*.tsbuildinfo
+
+# Yarn
+.yarn/
+.pnp.*
