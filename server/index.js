@@ -25,9 +25,6 @@ async function connectToDatabase() {
 }
 const mongoURI = process.env.MONGO_URL
 const PORT = process.env.PORT;
-console.log("HERE")
-console.log(mongoURI)
-console.log(PORT)
 
 const client = new MongoClient(mongoURI, {
   serverApi: {
