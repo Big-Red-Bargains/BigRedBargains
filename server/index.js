@@ -34,6 +34,12 @@ const client = new MongoClient(mongoURI, {
   }
 });
 
+// routes
+
+app.post('/getItems', cors(), async (req, res) => {
+  
+})
+
 async function startServer() {
   await connectToDatabase();
   app.listen(PORT, () => {

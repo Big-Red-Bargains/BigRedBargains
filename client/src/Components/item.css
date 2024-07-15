@@ -1,0 +1,55 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: "Inter";
+  color: black;
+}
+
+.Table {
+  display: grid;
+  padding: 1.5vw;
+  grid-template-rows: repeat(4, 100px);
+  grid-template-columns: repeat(4, 1fr);
+  justify-content: center;
+  margin: auto;
+  column-gap: 1.5vw;
+  row-gap: 40vh;
+  width: 90%;
+
+  .item {
+    display: block;
+    background-color: white;
+    height: fit-content;
+    box-shadow: 2px 1vh 1vh 1px rgb(0 0 0 / 20%);
+    margin: 0;
+
+    .image {
+      top: 0;
+      margin: 0;
+      height: 50%;
+      background-image: url("../Media/image.png");
+
+      img {
+        object-fit: contain;
+        width: 100%;
+        height: 20vh;
+      }
+    }
+
+    .info {
+      margin: 0;
+      position: relative;
+      bottom: 0;
+      height: 100%;
+      padding: 1vw;
+      /* background-color: red; */
+
+      #description {
+        opacity: 0.5;
+      }
+    }
+  }
+}

@@ -1,4 +1,5 @@
 import './listings.css';
+import Item from '../Components/item'
 
 function Listings() {
   return (
@@ -6,6 +7,9 @@ function Listings() {
       <header className="App-header">
         <div className = "table-header">
           <input placeholder='search'></input>
+        </div>
+        <div className = "table">
+          <Item/>
         </div>
       </header>
     </div>
