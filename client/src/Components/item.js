@@ -1,6 +1,7 @@
 import './item.css';
 import React, { useEffect, useState } from 'react';
 import sampleItem from '../Media/image.png';
+import heartIcon from '../Media/heart.png'
 
 function Item() {
 
@@ -29,6 +30,36 @@ function Item() {
     }
   }
 
+  function likeItem(){
+    console.log("in LIke ")
+    let button = document.getElementById("love")
+    button.classList.add('item-liked');
+
+    // need to add this specific item to liked item
+    // try {
+    //   const response = await fetch("http://localhost:8000/addLiked", {
+    //     method: "POST",
+    //     headers: {
+    //       "Content-Type": "application/json"
+    //     },
+    //     body: JSON.stringify({
+    //       token: localStorage.getItem('token')
+    //     }),
+    //   });
+
+    //   if (!response.ok) {
+    //     console.error("Error fetching data:", response.statusText);
+    //     return [];
+    //   }
+
+    //   const data = await response.json();
+    //   return data;
+    // } catch (error) {
+    //   console.error("Error accessing endpoint:", error);
+    //   return [];
+    // }
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       // const token = localStorage.getItem('token');
@@ -55,7 +86,8 @@ function Item() {
       <header className="Item-header">
         <div className="Table">
           <div className="item">
-            <div className = "image">
+            <img id="love" src={heartIcon} alt = "loveIcon" onClick = {likeItem} />
+            <div className="image">
               <img src={sampleItem} />
             </div>
             <div className="info">
@@ -65,7 +97,8 @@ function Item() {
             </div>
           </div>
           <div className="item">
-            <div className = "image">
+            <img id="love" src={heartIcon} alt = "loveIcon" onClick = {likeItem} />
+            <div className="image">
               <img src={sampleItem} />
             </div>
             <div className="info">
@@ -75,7 +108,8 @@ function Item() {
             </div>
           </div>
           <div className="item">
-            <div className = "image">
+            <img id="love" src={heartIcon} alt = "loveIcon" onClick = {likeItem} />
+            <div className="image">
               <img src={sampleItem} />
             </div>
             <div className="info">
@@ -85,7 +119,8 @@ function Item() {
             </div>
           </div>
           <div className="item">
-            <div className = "image">
+            <img id="love" src={heartIcon} alt = "loveIcon" onClick = {likeItem} />
+            <div className="image">
               <img src={sampleItem} />
             </div>
             <div className="info">
@@ -95,7 +130,8 @@ function Item() {
             </div>
           </div>
           <div className="item">
-            <div className = "image">
+            <img id="love" src={heartIcon} alt = "loveIcon" onClick = {likeItem} />
+            <div className="image">
               <img src={sampleItem} />
             </div>
             <div className="info">

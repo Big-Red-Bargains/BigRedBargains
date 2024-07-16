@@ -36,17 +36,25 @@ input {
   outline: none;
   border:1px solid rgb(0 0 0 / 20%);;
   border-radius: 15px;
+  font-size: 16px;
 }
 
 ::placeholder{
   font-family: "Inter";
-  color:black;
+  font-size: 16px;
 }
 
 @media (max-width: 600px) {
   input {
     background-size: 5vw;
     padding-left: 5vw;
+  }
+  .table-header {
+    img{
+      margin: auto 20px;
+      height:3vw;
+      width:3vw;
+    }
   }
 }
 
@@ -55,11 +63,25 @@ input {
     background-size: 3vw;
     padding-left: 3vw;
   }
+  .table-header {
+    img{
+      margin: auto 20px;
+      height:2vw;
+      width:2vw;
+    }
+  }
 }
 
 @media (min-width: 901px) {
   input {
-    background-size: 3vw;
+    background-size: 2.5vw;
     padding-left: 3vw;
+  }
+  .table-header {
+    img{
+      margin: auto 20px;
+      height:2vw;
+      width:2vw;
+    }
   }
 }
