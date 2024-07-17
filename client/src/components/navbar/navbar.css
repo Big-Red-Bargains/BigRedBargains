@@ -1,0 +1,28 @@
+.navbar {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* border-bottom: 2px solid #A2998B; */
+  padding-top: 4px;
+}
+
+.navbar h1 {
+  color: #EF4035;
+  font-size: 40px;
+  padding: 8px;
+  margin: 0;
+}
+
+.navbar a {
+  font-family: 'Baloo 2';
+  text-decoration: none;
+  margin: 0 8px;
+  padding: 0 4px;
+  font-size: 24px;
+  color: black;
+}
+
+.navbar a:hover {
+  border-bottom: 4px solid #EF4035;
+}
