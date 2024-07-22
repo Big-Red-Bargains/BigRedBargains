@@ -18,7 +18,7 @@ let collection;
 async function connectToDatabase() {
   try {
     await client.connect();
-    collection = client.db("EduNotes").collection("userData"); // should replace with specific collection
+    collection = client.db("BigRedBargains").collection("Listings"); // should replace with specific collection
     console.log('Connected to MongoDB');
   } catch (error) {
     console.error('Error connecting to MongoDB:', error);
@@ -40,6 +40,7 @@ const client = new MongoClient(mongoURI, {
 // routes
 
 app.post('/getItems', cors(), async (req, res) => {
+  collection = client.db("BigRedBargains").collection("Listings");
     // need to set collection to the collection containing all items
 
 })

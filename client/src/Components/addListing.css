@@ -8,46 +8,13 @@ body {
   color: black;
 }
 
-.table-header {
-  display: inline-flex;
-  justify-content: center;
-  text-align: center;
-  width: 100%;
-  margin:auto;
-
-  img{
-    text-align: center;
-    object-fit:cover;
-    margin: auto 20px;
-    height:2vw;
-    width:2vw;
-  }
-  img:hover{
-    cursor:pointer;
-    opacity:0.5;
-  }
+.addListing{
+  background-color:white;
 }
 
-input {
-  width: 33%;
-  border: none;
-  padding: 0 1vw;
-  background-image: url('../Media/search.png');
-  background-color: #D9D9D9;
-  background-position: 0% 50%;
-  background-repeat: no-repeat;
-  outline: none;
-  border:1px solid rgb(0 0 0 / 20%);;
-  border-radius: 15px;
-  font-size: 16px;
-}
+/*
 
-::placeholder{
-  font-family: "Inter";
-  font-size: 16px;
-}
-
-@media (max-width: 600px) {
+/* @media (max-width: 600px) {
   input {
     background-size: 5vw;
     padding-left: 5vw;
