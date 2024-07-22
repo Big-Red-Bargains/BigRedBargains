@@ -1,15 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
+import reportWebVitals from './reportWebVitals';
+
 import {
   createBrowserRouter,
   RouterProvider, Route
 } from "react-router-dom";
-import './index.css';
+import Root from './routes/root';
 import Home from './routes/home';
 import Listings from './routes/listings'
 // import App from './App';
 import reportWebVitals from './reportWebVitals';
 import ErrorPage from "./error-page";
+
+import './index.css';
 
 const router = createBrowserRouter([
   {
@@ -22,6 +26,12 @@ const router = createBrowserRouter([
     path: "/listings",
     element: <Listings />,
     errorElement: <ErrorPage />,
+    children: [
+      {
+        path: "/home",
+        element: <Home />,
+      }
+    ]
   },
 ]);
 
