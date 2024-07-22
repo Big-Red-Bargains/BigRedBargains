@@ -60,6 +60,11 @@ function Item() {
     // }
   }
 
+  function showItems(){
+    // point of function is to only show certain number of items in the table at a time
+    
+  }
+
   useEffect(() => {
     const fetchData = async () => {
       // const token = localStorage.getItem('token');

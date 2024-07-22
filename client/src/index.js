@@ -10,7 +10,6 @@ import Root from './routes/root';
 import Home from './routes/home';
 import Listings from './routes/listings'
 // import App from './App';
-import reportWebVitals from './reportWebVitals';
 import ErrorPage from "./error-page";
 
 import './index.css';
@@ -25,13 +24,7 @@ const router = createBrowserRouter([
   {
     path: "/listings",
     element: <Listings />,
-    errorElement: <ErrorPage />,
-    children: [
-      {
-        path: "/home",
-        element: <Home />,
-      }
-    ]
+    errorElement: <ErrorPage />
   },
 ]);
 

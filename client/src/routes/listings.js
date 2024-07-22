@@ -1,5 +1,5 @@
 import './listings.css';
-import Item from '../Components/item';
+import Item from '../components/item';
 import addIcon from '../Media/add.png';
 import sortIcon from '../Media/sort.png';
 
