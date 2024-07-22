@@ -12,11 +12,13 @@ app.use(express.json());
 const dotenv = require('dotenv');
 dotenv.config();
 
+let collection;
+
 // MongoDB connection
 async function connectToDatabase() {
   try {
     await client.connect();
-    collection = client.db("EduNotes").collection("userData");
+    collection = client.db("BigRedBargains").collection("Listings"); // should replace with specific collection
     console.log('Connected to MongoDB');
   } catch (error) {
     console.error('Error connecting to MongoDB:', error);
@@ -33,6 +35,15 @@ const client = new MongoClient(mongoURI, {
     deprecationErrors: true,
   }
 });
+
+
+// routes
+
+app.post('/getItems', cors(), async (req, res) => {
+  collection = client.db("BigRedBargains").collection("Listings");
+    // need to set collection to the collection containing all items
+
+})
 
 async function startServer() {
   await connectToDatabase();

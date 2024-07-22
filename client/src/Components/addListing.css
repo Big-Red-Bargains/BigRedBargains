@@ -1,0 +1,78 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: "Inter";
+  color: black;
+}
+
+.addListing{
+  background-color:white;
+}
+
+/*
+
+/* @media (max-width: 600px) {
+  input {
+    background-size: 5vw;
+    padding-left: 5vw;
+  }
+  ::placeholder{
+    font-family: "Inter";
+    font-size: 12px;
+  }
+  .table-header {
+    img{
+      margin: auto 10px;
+      height:3vw;
+      width:3vw;
+    }
+  }
+}
+
+@media (min-width: 601px) and (max-width: 999px) {
+  input {
+    height: 3vh;
+    background-size: 2.5vw;
+    padding-left: 3vw;
+  }
+  .table-header {
+    img{
+      margin: auto 20px;
+      height:2vw;
+      width:2vw;
+    }
+  }
+}
+
+@media (min-width: 1000px) {
+  input {
+    background-size: 2.5vw;
+    height: 5vh;
+    padding-left: 3vw;
+  }
+  .table-header {
+    img{
+      margin: auto 20px;
+      height:2vw;
+      width:2vw;
+    }
+  }
+}
+/* 
+@media (min-width: 901px) {
+  input {
+    background-size: 2.5vw;
+    height: 3vh;
+    padding-left: 3vw;
+  }
+  .table-header {
+    img{
+      margin: auto 20px;
+      height:2vw;
+      width:2vw;
+    }
+  }
+} */
