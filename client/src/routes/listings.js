@@ -1,11 +1,11 @@
 import './listings.css';
-import Item from '../Components/item';
+import Item from '../components/item.js';
 import addIcon from '../Media/add.png';
 import sortIcon from '../Media/sort.png';
 
 function Listings() {
   function openAddListing (){
-    
+
   }
   return (
     <div className="Listings">
