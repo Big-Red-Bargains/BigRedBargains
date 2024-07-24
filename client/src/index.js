@@ -9,6 +9,7 @@ import {
 import Root from './routes/root';
 import Home from './routes/home';
 import Listings from './routes/listings'
+import SignIn from './routes/signIn/signIn'
 // import App from './App';
 import ErrorPage from "./error-page";
 import { GoogleOAuthProvider } from "@react-oauth/google"
@@ -27,6 +28,13 @@ const router = createBrowserRouter([
     element: <Listings />,
     errorElement: <ErrorPage />
   },
+  {
+    path: "/signin",
+    element: <SignIn />,
+    errorElement: <ErrorPage />
+  },
+
+
 ]);
 
 
