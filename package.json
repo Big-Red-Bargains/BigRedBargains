@@ -11,6 +11,7 @@
     "client": "cd client && yarn start"
   },
   "dependencies": {
+    "@react-oauth/google": "^0.12.1",
     "axios": "^1.7.2",
     "concurrently": "^8.2.2",
     "cors": "^2.8.5",

@@ -8,7 +8,9 @@ import {
 } from "react-router-dom";
 import Home from './routes/home';
 import Listings from './routes/listings'
+import SignIn from './routes/signIn/signIn'
 import ErrorPage from "./error-page";
+import { GoogleOAuthProvider } from "@react-oauth/google"
 
 import './index.css';
 
@@ -21,15 +23,22 @@ const router = createBrowserRouter([
   {
     path: "/listings",
     element: <Listings />,
-    errorElement: <ErrorPage />,
+    errorElement: <ErrorPage />
+  },
+  {
+    path: "/signin",
+    element: <SignIn />,
+    errorElement: <ErrorPage />
   },
 ]);
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
-  <React.StrictMode>
-    <RouterProvider router={router} />
-  </React.StrictMode>
+  <GoogleOAuthProvider clientId='452243074156-pnj4liqiolg05tft9t5kltlcqs3fplpn.apps.googleusercontent.com'>
+    <React.StrictMode>
+      <RouterProvider router={router} />
+    </React.StrictMode>
+  </GoogleOAuthProvider>
 );
 
 // If you want to start measuring performance in your app, pass a function
