@@ -61,8 +61,6 @@ app.post('/addItem', cors(), async (req, res) => {
 })
 
 app.get('/getItems', async (req, res) => {
-  console.log("in get item endpoint");
-
   try {
     // Connect to the database
     await client.connect();
@@ -76,15 +74,14 @@ app.get('/getItems', async (req, res) => {
 
     // Map the items to the desired format
     const formattedItems = items.map(item => [
-      item.name,
+      item.name.charAt(0).toUpperCase() +item.name.slice(1),
       item.description,
       item.image
-    ]);
+    ])
 
     // Remove duplicates if necessary
     const uniqueItems = Array.from(new Set(formattedItems.map(JSON.stringify))).map(JSON.parse);
 
-    console.log(uniqueItems);
     res.json(uniqueItems);
   } catch (error) {
     console.error("Error fetching items:", error);

@@ -34,7 +34,7 @@ export async function getItems() {
   }
 }
 
-function Item() {
+function Item({ searchQuery }) {
   const [data, setData] = useState([]);
 
   useEffect(() => {
@@ -55,14 +55,19 @@ function Item() {
     console.log(`Item ${itemId} liked`);
   };
 
+  const filteredData = data.filter((item) =>
+    item.name.toLowerCase().includes(searchQuery.toLowerCase()) ||
+    item.description.toLowerCase().includes(searchQuery.toLowerCase())
+  );
+
   return (
     <div className="Item">
       <header className="Item-header">
         <div className="Table">
-          {data.length === 0 ? (
+          {filteredData.length === 0 ? (
             <p>No items found.</p>
           ) : (
-            data.map((item, index) => (
+            filteredData.map((item, index) => (
               <div className="item" key={index}> {/* Ideally, use a unique ID here */}
                 <img
                   className="love-icon"

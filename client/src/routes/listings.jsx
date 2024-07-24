@@ -8,6 +8,11 @@ import AddListing from '../components/addListing/addListing';
 
 function Listings() {
   const [open, setOpen] = useState(false);
+  const [searchInput, setSearchInput] = useState("");
+
+  const handleSearchChange = (event) => {
+    setSearchInput(event.target.value);
+  };
 
   const handleClose = () => {
     setOpen(false);
@@ -26,14 +31,14 @@ function Listings() {
             id="searchBar"
             placeholder="search"
             type="text"
-          // value={searchInput}
-          // onChange={}
+            value={searchInput}
+            onChange={handleSearchChange}
           />
           <img id="sortIcon" src={sortIcon} alt="sort icon" />
         </div>
         <div className="table">
           <AddListing isOpen={open} onClose={handleClose} />
-          <Item />
+          <Item searchQuery={searchInput}/>
         </div>
       </header>
     </div>
