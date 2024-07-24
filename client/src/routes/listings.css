@@ -9,6 +9,8 @@ body {
 }
 
 .table-header {
+  position:sticky;
+  z-index:1;
   display: inline-flex;
   justify-content: center;
   text-align: center;

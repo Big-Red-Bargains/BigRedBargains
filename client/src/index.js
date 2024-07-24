@@ -4,9 +4,8 @@ import reportWebVitals from './reportWebVitals';
 
 import {
   createBrowserRouter,
-  RouterProvider, Route
+  RouterProvider
 } from "react-router-dom";
-import Root from './routes/root';
 import Home from './routes/home';
 import Listings from './routes/listings'
 import ErrorPage from "./error-page";
@@ -17,16 +16,14 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
-    // errorElement: <ErrorPage />,
+    errorElement: <ErrorPage />,
   },
-  ,
   {
     path: "/listings",
     element: <Listings />,
     errorElement: <ErrorPage />
   },
 ]);
-
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

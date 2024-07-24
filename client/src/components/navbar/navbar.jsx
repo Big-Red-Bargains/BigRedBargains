@@ -5,7 +5,7 @@ import './navbar.css';
 export default function Navbar() {
 
   const navItems = [
-    { id: 1, text: "Home", path: "/home" },
+    { id: 1, text: "Home", path: "/" },
     { id: 2, text: "Listings", path: "/listings" },
     { id: 3, text: "Item", path: "/item" },
     { id: 4, text: "Profile", path: "/profile" },
