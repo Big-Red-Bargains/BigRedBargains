@@ -1,150 +1,86 @@
 import './item.css';
 import React, { useEffect, useState } from 'react';
 import sampleItem from '../Media/image.png';
-import heartIcon from '../Media/heart.png'
+import heartIcon from '../Media/heart.png';
 
-function Item() {
-
-  async function getItems() {
-    try {
-      const response = await fetch("http://localhost:8000/getItems", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify({
-          token: localStorage.getItem('token')
-        }),
-      });
-
-      if (!response.ok) {
-        console.error("Error fetching data:", response.statusText);
-        return [];
+// Fetch and transform items
+export async function getItems() {
+  try {
+    const response = await fetch("http://localhost:8000/getItems", {
+      method: "GET",
+      headers: {
+        "Content-Type": "application/json"
       }
+    });
 
-      const data = await response.json();
-      return data;
-    } catch (error) {
-      console.error("Error accessing endpoint:", error);
+    if (!response.ok) {
+      console.error("Error fetching data:", response.statusText);
       return [];
     }
+
+    const rawData = await response.json();
+    // Transform the rawData into an array of objects
+    const data = rawData.map(item => ({
+      name: item[0],
+      description: item[1],
+      image: item[2]
+    }));
+    console.log(data)
+
+    return data;
+  } catch (error) {
+    console.error("Error accessing endpoint:", error);
+    return [];
   }
+}
 
-  function likeItem(){
-    console.log("in LIke ")
-    let button = document.getElementById("love")
-    button.classList.add('item-liked');
-
-    // need to add this specific item to liked item
-    // try {
-    //   const response = await fetch("http://localhost:8000/addLiked", {
-    //     method: "POST",
-    //     headers: {
-    //       "Content-Type": "application/json"
-    //     },
-    //     body: JSON.stringify({
-    //       token: localStorage.getItem('token')
-    //     }),
-    //   });
-
-    //   if (!response.ok) {
-    //     console.error("Error fetching data:", response.statusText);
-    //     return [];
-    //   }
-
-    //   const data = await response.json();
-    //   return data;
-    // } catch (error) {
-    //   console.error("Error accessing endpoint:", error);
-    //   return [];
-    // }
-  }
-
-  function showItems(){
-    // point of function is to only show certain number of items in the table at a time
-    
-  }
+function Item() {
+  const [data, setData] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
-      // const token = localStorage.getItem('token');
-      // if (token) {
-      //   try {
-      //     const result = await getClasses();
-      //     setData(result);
-      //   } catch (error) {
-      //     setError("Error fetching classes");
-      //   } finally {
-      //     // setLoading(false);
-      //   }
-      // } else {
-      //   console.error("Token not found");
-      //   // setLoading(false);
-      // }
+      try {
+        const result = await getItems();
+        setData(result);
+      } catch (error) {
+        console.error("Error fetching items:", error);
+      }
     };
 
     fetchData();
-  }, []); // Ensure useEffect runs only once
+  }, []);
+
+  const likeItem = (itemId) => {
+    // Placeholder for like functionality
+    console.log(`Item ${itemId} liked`);
+  };
 
   return (
     <div className="Item">
       <header className="Item-header">
         <div className="Table">
-          <div className="item">
-            <img id="love" src={heartIcon} alt = "loveIcon" onClick = {likeItem} />
-            <div className="image">
-              <img src={sampleItem} />
-            </div>
-            <div className="info">
-              <h2 id="productName">Test Product</h2>
-              <p id="description">This product is a testing product.</p>
-              <h3 id="cost">$30</h3>
-            </div>
-          </div>
-          <div className="item">
-            <img id="love" src={heartIcon} alt = "loveIcon" onClick = {likeItem} />
-            <div className="image">
-              <img src={sampleItem} />
-            </div>
-            <div className="info">
-              <h2 id="productName">Test Product</h2>
-              <p id="description">This product is a testing product.</p>
-              <h3 id="cost">$30</h3>
-            </div>
-          </div>
-          <div className="item">
-            <img id="love" src={heartIcon} alt = "loveIcon" onClick = {likeItem} />
-            <div className="image">
-              <img src={sampleItem} />
-            </div>
-            <div className="info">
-              <h2 id="productName">Test Product</h2>
-              <p id="description">This product is a testing product.</p>
-              <h3 id="cost">$30</h3>
-            </div>
-          </div>
-          <div className="item">
-            <img id="love" src={heartIcon} alt = "loveIcon" onClick = {likeItem} />
-            <div className="image">
-              <img src={sampleItem} />
-            </div>
-            <div className="info">
-              <h2 id="productName">Test Product</h2>
-              <p id="description">This product is a testing product.</p>
-              <h3 id="cost">$30</h3>
-            </div>
-          </div>
-          <div className="item">
-            <img id="love" src={heartIcon} alt = "loveIcon" onClick = {likeItem} />
-            <div className="image">
-              <img src={sampleItem} />
-            </div>
-            <div className="info">
-              <h2 id="productName">Test Product</h2>
-              <p id="description">This product is a testing product.</p>
-              <h3 id="cost">$30</h3>
-            </div>
-          </div>
+          {data.length === 0 ? (
+            <p>No items found.</p>
+          ) : (
+            data.map((item, index) => (
+              <div className="item" key={index}> {/* Use index or unique ID as key */}
+                <img
+                  className="love-icon"
+                  src={heartIcon}
+                  alt="loveIcon"
+                  onClick={() => likeItem(index)} // Pass index or unique identifier
+                />
+                <div className="image">
+                  <img src={item.image || sampleItem} alt={item.name || "Sample"} />
+                </div>
+                <div className="info">
+                  <h2 className="productName">{item.name}</h2>
+                  <p className="description">{item.description}</p>
+                  <h3 className="cost">$30</h3> {/* Fallback price */}
+                </div>
+              </div>
+            ))
+          )}
         </div>
       </header>
     </div>

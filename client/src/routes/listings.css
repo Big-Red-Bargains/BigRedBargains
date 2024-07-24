@@ -30,7 +30,7 @@ body {
   }
 }
 
-input {
+#searchBar {
   width: 33%;
   border: none;
   padding: 0 1vw;
@@ -50,7 +50,7 @@ input {
 }
 
 @media (max-width: 600px) {
-  input {
+  #searchBar {
     background-size: 5vw;
     padding-left: 5vw;
   }
@@ -68,7 +68,7 @@ input {
 }
 
 @media (min-width: 601px) and (max-width: 999px) {
-  input {
+  #searchBar {
     height: 3vh;
     background-size: 2.5vw;
     padding-left: 3vw;
@@ -83,7 +83,7 @@ input {
 }
 
 @media (min-width: 1000px) {
-  input {
+  #searchBar {
     background-size: 2.5vw;
     height: 5vh;
     padding-left: 3vw;
@@ -98,7 +98,7 @@ input {
 }
 /* 
 @media (min-width: 901px) {
-  input {
+  #searchBar {
     background-size: 2.5vw;
     height: 3vh;
     padding-left: 3vw;

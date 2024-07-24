@@ -1,0 +1,57 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@100..900&display=swap');
+
+body {
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  font-family: "Inter";
+  color: black;
+}
+
+.addListing {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  .modal {
+    position: relative;
+    background-color: white;
+    min-height: 50%;
+    height: fit-content;
+    width: 50%;
+    text-align: center;
+    margin: auto;
+    padding: 20px;
+
+    .add-listings-body {
+      font-family: 'Baloo 2';
+    }
+
+    .add-listings-footer {
+      position: absolute;
+      width: 100%;
+      right: 0;
+      bottom: 0;
+      display: inline-block;
+      justify-content: center;
+      padding: 20px 0px;
+      margin: auto;
+      text-align: center;
+
+      button {
+        margin: 0 10px;
+      }
+
+      button:hover {
+        cursor: pointer;
+        opacity: 0.5;
+      }
+    }
+  }
+}
