@@ -4,12 +4,10 @@ import reportWebVitals from './reportWebVitals';
 
 import {
   createBrowserRouter,
-  RouterProvider, Route
+  RouterProvider
 } from "react-router-dom";
-import Root from './routes/root';
 import Home from './routes/home';
 import Listings from './routes/listings'
-// import App from './App';
 import ErrorPage from "./error-page";
 
 import './index.css';
@@ -18,16 +16,14 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
-    // errorElement: <ErrorPage />,
+    errorElement: <ErrorPage />,
   },
-  ,
   {
     path: "/listings",
     element: <Listings />,
-    errorElement: <ErrorPage />
+    errorElement: <ErrorPage />,
   },
 ]);
-
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
