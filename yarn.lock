@@ -3290,7 +3290,7 @@ concat-map@0.0.1:
 
 concurrently@^8.2.2:
   version "8.2.2"
-  resolved "https://registry.npmjs.org/concurrently/-/concurrently-8.2.2.tgz"
+  resolved "https://registry.yarnpkg.com/concurrently/-/concurrently-8.2.2.tgz#353141985c198cfa5e4a3ef90082c336b5851784"
   integrity sha512-1dP4gpXFhei8IOtlXRE/T/4H88ElHgTiUzh71YUmtjTEHMSRS2Z/fgOxHSxxusGHogsRfxNq1vyAwxSC+EVyDg==
   dependencies:
     chalk "^4.1.2"

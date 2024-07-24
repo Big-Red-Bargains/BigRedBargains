@@ -4,13 +4,11 @@ import reportWebVitals from './reportWebVitals';
 
 import {
   createBrowserRouter,
-  RouterProvider, Route
+  RouterProvider
 } from "react-router-dom";
-import Root from './routes/root';
 import Home from './routes/home';
 import Listings from './routes/listings'
 import SignIn from './routes/signIn/signIn'
-// import App from './App';
 import ErrorPage from "./error-page";
 import { GoogleOAuthProvider } from "@react-oauth/google"
 
@@ -20,9 +18,8 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: <Home />,
-    // errorElement: <ErrorPage />,
+    errorElement: <ErrorPage />,
   },
-  ,
   {
     path: "/listings",
     element: <Listings />,
@@ -33,10 +30,7 @@ const router = createBrowserRouter([
     element: <SignIn />,
     errorElement: <ErrorPage />
   },
-
-
 ]);
-
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(

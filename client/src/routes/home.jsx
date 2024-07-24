@@ -1,12 +1,12 @@
 
-import {NavLink } from 'react-router-dom';
+import Navbar from '../components/navbar/navbar';
 
 export default function Home() {
   return (
     <>
       <div id="sidebar">
+        <Navbar />
         <h1>Home Page</h1>
-        <NavLink to="/listings" activeClassName="active-link" id= "listings">Listings</NavLink>
       </div>
     </>
   );
