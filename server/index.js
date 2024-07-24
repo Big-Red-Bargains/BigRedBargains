@@ -17,8 +17,9 @@ let collection;
 // MongoDB connection
 async function connectToDatabase() {
   try {
+    console.log('Attempting to connect to MongoDB with URI:', mongoURI);
     await client.connect();
-    collection = client.db("BigRedBargains").collection("Listings"); // should replace with specific collection
+    collection = client.db("BigRedBargains").collection("Listings");
     console.log('Connected to MongoDB');
   } catch (error) {
     console.error('Error connecting to MongoDB:', error);
