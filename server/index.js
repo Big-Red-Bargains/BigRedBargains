@@ -60,22 +60,37 @@ app.post('/addItem', cors(), async (req, res) => {
   }
 })
 
-app.get('/getItems', cors(), async (req,res) => {
-  console.log("in get item endpoint")
-  collection = client.db("BigRedBargains").collection("Listings");
-  const query = {sellerID: "kln47"}
-  const cursor = collection.find(query)
-  items = []
-  await cursor.forEach(doc => {
-    temp = []
-    temp.push(doc.name);
-    temp.push(doc.description);
-    temp.push(doc.image)
-    items.push(temp)
-  });
-  console.log(items)
-  res.json(items);
-})
+app.get('/getItems', async (req, res) => {
+  console.log("in get item endpoint");
+
+  try {
+    // Connect to the database
+    await client.connect();
+    const collection = client.db("BigRedBargains").collection("Listings");
+    
+    // Define the query
+    const query = { sellerID: "kln47" };
+    
+    // Fetch the items
+    const items = await collection.find(query).toArray();
+
+    // Map the items to the desired format
+    const formattedItems = items.map(item => [
+      item.name,
+      item.description,
+      item.image
+    ]);
+
+    // Remove duplicates if necessary
+    const uniqueItems = Array.from(new Set(formattedItems.map(JSON.stringify))).map(JSON.parse);
+
+    console.log(uniqueItems);
+    res.json(uniqueItems);
+  } catch (error) {
+    console.error("Error fetching items:", error);
+    res.status(500).json({ error: 'Failed to fetch items' });
+  } 
+});
 
 async function startServer() {
   await connectToDatabase();

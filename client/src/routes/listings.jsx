@@ -1,8 +1,8 @@
 import './listings.css';
 import React, { useEffect, useState } from 'react';
-import Item from '../components/item';
-import addIcon from '../Media/add.png';
-import sortIcon from '../Media/sort.png';
+import Item from '../components/item/item';
+import addIcon from '../assets/images/add.png';
+import sortIcon from '../assets/images/sort.png';
 import Navbar from '../components/navbar/navbar';
 import AddListing from '../components/addListing/addListing';
 
@@ -33,7 +33,7 @@ function Listings() {
         </div>
         <div className="table">
           <AddListing isOpen={open} onClose={handleClose} />
-          <Item/>
+          <Item />
         </div>
       </header>
     </div>

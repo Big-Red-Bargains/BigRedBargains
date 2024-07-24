@@ -51,7 +51,7 @@ body {
   margin: 0;
   height: 200px;
   /* Fixed height for consistency */
-  background-image: url("../Media/image.png");
+  background-image: url("../../assets/images/defaultItem.png");
   background-size: cover;
   background-position: center;
 

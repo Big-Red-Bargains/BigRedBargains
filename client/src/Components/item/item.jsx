@@ -1,7 +1,7 @@
 import './item.css';
 import React, { useEffect, useState } from 'react';
-import sampleItem from '../Media/image.png';
-import heartIcon from '../Media/heart.png';
+import sampleItem from '../../assets/images/defaultItem.png';
+import heartIcon from '../../assets/images/heart.png';
 
 // Fetch and transform items
 export async function getItems() {
@@ -25,7 +25,7 @@ export async function getItems() {
       description: item[1],
       image: item[2]
     }));
-    console.log(data)
+    console.log(data);
 
     return data;
   } catch (error) {
@@ -48,7 +48,7 @@ function Item() {
     };
 
     fetchData();
-  }, []);
+  }, []); // Dependency array is empty, ensuring this effect runs only once on mount
 
   const likeItem = (itemId) => {
     // Placeholder for like functionality
@@ -63,12 +63,12 @@ function Item() {
             <p>No items found.</p>
           ) : (
             data.map((item, index) => (
-              <div className="item" key={index}> {/* Use index or unique ID as key */}
+              <div className="item" key={index}> {/* Ideally, use a unique ID here */}
                 <img
                   className="love-icon"
                   src={heartIcon}
                   alt="loveIcon"
-                  onClick={() => likeItem(index)} // Pass index or unique identifier
+                  onClick={() => likeItem(index)} // Consider using unique identifier if available
                 />
                 <div className="image">
                   <img src={item.image || sampleItem} alt={item.name || "Sample"} />
