@@ -25,4 +25,82 @@
 
 .navbar a:hover {
   border-bottom: 4px solid #EF4035;
+  cursor: pointer;
+}
+
+.burger {
+  display: none;
+}
+
+.burger-header {
+  display: flex;
+  align-items: center;
+}
+
+.burger-header h1 {
+  color: #EF4035;
+  font-size: 24px;
+  margin: 0 8px;
+  padding: 0;
+}
+
+.burger-icon {
+  width: 2rem;
+  height: 2rem;
+  display: flex;
+  justify-content: space-around;
+  flex-flow: column nowrap;
+  margin: 4px;
+}
+
+.burger-icon div {
+  width: 2rem;
+  height: 0.25rem;
+  border-radius: 10px;
+  background-color: black;
+  transform-origin: center;
+  transition: all 0.3s ease-in-out;
+}
+
+.burger-menu.is-open {
+  display: block;
+}
+
+.burger-menu {
+  display: none;
+}
+
+.burger-icon div:nth-child(1) {
+  transform: translateY(0) rotate(0);
+}
+
+.burger-icon.is-open div:nth-child(1) {
+  transform: translateY(0.68rem) rotate(45deg);
+}
+
+.burger-icon div:nth-child(2) {
+  transform: scaleX(1);
+}
+
+.burger-icon.is-open div:nth-child(2) {
+  transform: scaleX(0);
+}
+
+.burger-icon div:nth-child(3) {
+  transform: translateY(0) rotate(0);
+}
+
+.burger-icon.is-open div:nth-child(3) {
+  transform: translateY(-0.68rem) rotate(-45deg);
+}
+
+@media only screen and (max-width: 800px) {
+  .navbar {
+    display: none;
+  }
+
+  .burger {
+    display: block;
+    margin: 8px;
+  }
 }
