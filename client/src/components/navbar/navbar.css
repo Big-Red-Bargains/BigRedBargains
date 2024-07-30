@@ -1,30 +1,33 @@
+.navigation {
+  border-bottom: #9FAD9F solid 2px;
+}
+
 .navbar {
   width: 100%;
   display: flex;
   justify-content: center;
   align-items: center;
-  /* border-bottom: 2px solid #A2998B; */
-  padding-top: 4px;
+  padding-top: 0.25rem;
 }
 
 .navbar h1 {
   color: #EF4035;
   font-size: 40px;
-  padding: 8px;
+  padding: 0.5rem;
   margin: 0;
 }
 
 .navbar a {
   font-family: 'Baloo 2';
   text-decoration: none;
-  margin: 0 8px;
-  padding: 0 4px;
+  margin: 0 0.5rem;
+  padding: 0 0.25rem;
   font-size: 24px;
   color: black;
 }
 
 .navbar a:hover {
-  border-bottom: 4px solid #EF4035;
+  border-bottom: 0.5rem solid #EF4035;
   cursor: pointer;
 }
 
@@ -39,9 +42,8 @@
 
 .burger-header h1 {
   color: #EF4035;
-  font-size: 24px;
-  margin: 0 8px;
-  padding: 0;
+  font-size: 2rem;
+  margin: 0 auto 0 0.5rem;
 }
 
 .burger-icon {
@@ -50,14 +52,14 @@
   display: flex;
   justify-content: space-around;
   flex-flow: column nowrap;
-  margin: 4px;
+  margin: 0.5rem;
 }
 
 .burger-icon div {
   width: 2rem;
   height: 0.25rem;
   border-radius: 10px;
-  background-color: black;
+  background-color: #222222;
   transform-origin: center;
   transition: all 0.3s ease-in-out;
 }
@@ -68,6 +70,19 @@
 
 .burger-menu {
   display: none;
+}
+
+.burger-menu ul {
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+.burger-menu a {
+  padding: 0.5rem 0.75rem;
+  border-top: solid 2px #9FAD9F;
+  text-decoration: none;
+  color: #222222;
 }
 
 .burger-icon div:nth-child(1) {
@@ -101,6 +116,5 @@
 
   .burger {
     display: block;
-    margin: 8px;
   }
 }

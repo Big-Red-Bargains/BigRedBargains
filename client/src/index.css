@@ -6,13 +6,51 @@
   font-style: normal;
 }
 
-body {
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+* {
   margin: 0;
+  padding: 0;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+  display: block;
+  max-width: 100%;
+}
+
+input,
+button,
+textarea,
+select {
+  font: inherit;
+}
+
+#root,
+#__next {
+  isolation: isolate;
+}
+
+body {
+  line-height: 1.5;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
     'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+
+body,
+html {
+  height: 100%;
+  width: 100%;
 }
 
 h1,
@@ -22,6 +60,16 @@ h4,
 h5,
 h6 {
   font-family: 'Baloo 2';
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  overflow-wrap: break-word;
 }
 
 code {

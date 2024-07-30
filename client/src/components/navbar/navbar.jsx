@@ -19,7 +19,7 @@ export default function Navbar() {
   ];
 
   return (
-    <div>
+    <div className="navigation">
       <nav className="navbar">
         <h1>BigRedBargains</h1>
         <ul>
@@ -35,12 +35,12 @@ export default function Navbar() {
       </nav>
       <nav className="burger" onClick={toggleBurgerOpen}>
         <div className="burger-header">
+          <h1>BigRedBargains</h1>
           <div className={burgerOpen ? "burger-icon is-open" : "burger-icon"}>
             <div />
             <div />
             <div />
           </div>
-          <h1>BigRedBargains</h1>
         </div>
         <div className={burgerOpen ? "burger-menu is-open" : "burger-menu"}>
           <ul>
