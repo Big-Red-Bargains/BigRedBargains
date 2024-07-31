@@ -32,6 +32,13 @@ export default function Navbar() {
             </NavLink >
           ))}
         </ul>
+        <div>
+          <NavLink to="/login">
+            <button>
+              Sign In
+            </button>
+          </NavLink>
+        </div>
       </nav>
       <nav className="burger" onClick={toggleBurgerOpen}>
         <div className="burger-header">

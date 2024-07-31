@@ -26,12 +26,12 @@ svg {
   max-width: 100%;
 }
 
-input,
+/* input,
 button,
 textarea,
 select {
   font: inherit;
-}
+} */
 
 #root,
 #__next {
