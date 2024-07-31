@@ -1,5 +1,7 @@
 .navigation {
-  box-shadow: 1px 2px 2px hsl(0deg 0% 50% / 0.333)
+  box-shadow: 1px 2px 2px hsl(0deg 0% 50% / 0.333);
+  position: relative;
+  z-index: 10;
 }
 
 .navbar {
@@ -33,7 +35,7 @@
 }
 
 .navbar button {
-  margin: 0 0.5rem;
+  margin: 0.75rem 1rem;
   padding: 0.75rem 1.25rem;
   border: none;
   border-radius: 8px;
@@ -94,7 +96,7 @@
 
 .burger-menu a {
   padding: 0.5rem 0.75rem;
-  border-top: solid 2px #9FAD9F;
+  border-top: solid 2px hsl(0deg 0% 50% / 0.333);
   text-decoration: none;
   color: #222222;
 }
