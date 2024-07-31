@@ -1,9 +1,9 @@
 .navigation {
-  border-bottom: #9FAD9F solid 2px;
+  box-shadow: 1px 2px 2px hsl(0deg 0% 50% / 0.333)
 }
 
 .navbar {
-  width: 100%;
+  width: 100vw;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -17,18 +17,32 @@
   margin: 0;
 }
 
-.navbar a {
-  font-family: 'Baloo 2';
+.navbar>ul>a {
   text-decoration: none;
   margin: 0 0.5rem;
   padding: 0 0.25rem;
-  font-size: 24px;
   color: black;
+  font-family: 'Baloo 2';
+  font-size: 24px;
+  font-weight: 600;
 }
 
-.navbar a:hover {
+.navbar>ul>a:hover {
   border-bottom: 0.5rem solid #EF4035;
   cursor: pointer;
+}
+
+.navbar button {
+  margin: 0 0.5rem;
+  padding: 0.75rem 1.25rem;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  color: white;
+  background-color: #EF4035;
+  font-family: 'Baloo 2';
+  font-size: 24px;
+  font-weight: 600;
 }
 
 .burger {

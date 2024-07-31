@@ -1,92 +1,56 @@
-* {
-    font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-    margin: 0%;
-    padding: 0%;
-    overflow-y: hidden;
-}
-
-.profile-avathar {
-    width: 100px;
-    height: 100px;
-    border-radius: 100%;
-}
-
-.profile-container {
-    width: 100%;
-    height: 100vh;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    border-radius: 8px;
-    background-color: rgb(255, 255, 255);
-}
-
-.profile-details {
-    text-align: center;
-}
-
-.profile-button {
-    padding: 8px 32px 8px 32px;
-    background-color: rgb(235, 235, 235);
-    border: 1px solid;
-    border-color: rgb(201, 201, 201);
-    color: black;
-    font-size: 18px;
-    border-radius: 8px;
-    cursor: pointer;
-    font-weight: 500;
-}
-
-.profile-details {
-    text-align: center;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 16px;
-    gap: 32px;
-}
-
-.profile-content {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
 button {
-    padding: 16px 32px 16px 32px;
-    background-color: rgb(172, 31, 228);
-    color: white;
-    font-size: 16px;
-    border-radius: 8px;
+    margin: 0 0.5rem;
+    padding: 0.75rem 1.25rem;
     border: none;
+    border-radius: 8px;
     cursor: pointer;
-    font-weight: 500;
+    color: white;
+    background-color: #EF4035;
+    font-family: 'Baloo 2';
+    font-size: 24px;
+    font-weight: 600;
 }
 
-h5,
-h4 {
-    color: gray;
-}
-
-.landing-container {
+.content {
     display: flex;
     flex-direction: column;
-    gap: 32px;
-    justify-content: center;
     align-items: center;
+    background-color: #F7F7F7;
+    width: 100vw;
+    height: 100vh;
 }
 
-.landing-icon {
-    background-color: rgba(162, 0, 255, 0.144);
-    padding: 10px;
+.profile {
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
-    border-radius: 100%;
+    margin-bottom: 2rem;
 }
 
-.landing-icon h1 {
-    font-size: 38px;
+.avatar {
+    margin-bottom: 1rem;
+    border-radius: 8px;
+}
+
+.name {
+    font-size: 24px;
+}
+
+.email {
+    color: #A2998B;
+}
+
+.login {
+    margin: 4px;
+    margin-top: 20rem;
+    background-color: #FFFFFF;
+    padding: 4rem;
+    border-radius: 8px;
+    box-shadow: 1px 2px 2px hsl(0deg 0% 50% / 0.333)
+}
+
+.login>div {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
