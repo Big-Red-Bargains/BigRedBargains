@@ -3,6 +3,7 @@ import React, { useEffect, useState } from 'react';
 import sampleItem from '../../assets/images/defaultItem.png';
 import heartIcon from '../../assets/images/heart.png';
 
+let savedItems = new Set()
 // Fetch and transform items
 export async function getItems() {
   try {
@@ -29,16 +30,17 @@ export async function getItems() {
     }));
 
     // Set liked stated for all liked items
-    for (let i = 0; i < data.length; i++){
+    for (let i = 0; i < data.length; i++) {
       let val = data[i]
-      if (val.saved === true){
+      if (val.saved === true) {
+        savedItems.add(val.id)
         let item = document.querySelector(`[data-item-id="${val.id}"]`);
-        if(item){
+        if (item) {
           item.classList.add('item-liked');
         }
       }
     }
-
+    console.log(savedItems)
     return data;
   } catch (error) {
     console.error("Error accessing endpoint:", error);
@@ -63,33 +65,62 @@ function Item({ searchQuery }) {
 
   async function likeItem(index, itemId) {
     // Need to save/unsave this liked item into the DB
-
     // Check if this id is in the currently saved items, if it is not:
-    const formData = {
-      itemId : data[index].id
-    };
+    if (savedItems.has(itemId) == false) {
+      const formData = {
+        itemId: data[index].id,
+        saved: true
+      };
 
-    try {
-      const response = await fetch("http://localhost:8000/saveItem", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json"
-        },
-        body: JSON.stringify(formData)
-      });
-  
-      if (!response.ok) {
-        console.error("Error fetching data:", response.statusText);
+      try {
+        const response = await fetch("http://localhost:8000/saveItem", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(formData)
+        });
+
+        if (!response.ok) {
+          console.error("Error fetching data:", response.statusText);
+        }
+      } catch (error) {
+        console.error("Error accessing endpoint:", error);
       }
-    } catch (error) {
-      console.error("Error accessing endpoint:", error);
-    }
 
-    // Placeholder for like functionality
-    let item = document.querySelector(`[data-item-id="${itemId}"]`);
-    if(item){
-      console.log("liked!")
-      item.classList.add('item-liked');
+      // Placeholder for like functionality
+      let item = document.querySelector(`[data-item-id="${itemId}"]`);
+      if (item) {
+        item.classList.add('item-liked');
+      }
+    }
+    else{ // need to unsave item
+      try {
+        const formData = {
+          itemId: data[index].id,
+          saved: false
+        };
+
+        const response = await fetch("http://localhost:8000/saveItem", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json"
+          },
+          body: JSON.stringify(formData)
+        });
+
+        if (!response.ok) {
+          console.error("Error fetching data:", response.statusText);
+        }
+      } catch (error) {
+        console.error("Error accessing endpoint:", error);
+      }
+
+      // Placeholder for like functionality
+      let item = document.querySelector(`[data-item-id="${itemId}"]`);
+      if (item) {
+        item.classList.remove('item-liked');
+      }
     }
   };
 
@@ -106,10 +137,10 @@ function Item({ searchQuery }) {
             <p>No items found.</p>
           ) : (
             filteredData.map((item, index) => (
-              <div className="item" key={item.id}> 
+              <div className="item" key={item.id}>
                 <img
                   data-item-id={item.id}
-                  className="love-icon" 
+                  className="love-icon"
                   src={heartIcon}
                   alt="loveIcon"
                   onClick={() => likeItem(index, item.id)} // Consider using unique identifier if available

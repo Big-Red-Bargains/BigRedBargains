@@ -94,15 +94,14 @@ app.get('/getItems', async (req, res) => {
 
 app.post('/saveItem', cors(), async (req, res) => {
   collection = client.db("BigRedBargains").collection("Listings");
-  const { itemId } = req.body
-
+  const { itemId, saved } = req.body
   // Define the query
   const query = { itemID: itemId };
 
   const result = await collection.updateOne(query,
     {
       $set: {
-        saved: true
+        saved: saved
       }
     }
   )
