@@ -27,6 +27,7 @@ function AddListing({ isOpen, onClose }) {
       if (response.ok) {
         // Request was successful
         console.log("Data inserted successfully");
+        window.location.reload()
         getItems()
 
       } else {
@@ -57,6 +58,8 @@ function AddListing({ isOpen, onClose }) {
           <input type="text" name="itemName" />
           <h3>Description of Item</h3>
           <input type="text" name="itemDescription" />
+          <h3>Cost of Item</h3>
+          <input type="text" name="itemCost" />
           <h3>Image of Item</h3>
           <input type="file" name="itemImage" />
         </div>

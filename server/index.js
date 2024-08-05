@@ -50,7 +50,8 @@ app.post('/addItem', cors(), async (req, res) => {
       itemID: itemId,
       name: name,
       description: description,
-      image: image
+      image: image,
+      saved: false
     };
     await collection.insertOne(itemData); // Insert the request payload into the database
     res.json({ message: 'Data inserted successfully' });
@@ -65,16 +66,64 @@ app.get('/getItems', async (req, res) => {
     // Connect to the database
     await client.connect();
     const collection = client.db("BigRedBargains").collection("Listings");
-    
+
     // Define the query
     const query = { sellerID: "kln47" };
-    
+
     // Fetch the items
     const items = await collection.find(query).toArray();
 
     // Map the items to the desired format
     const formattedItems = items.map(item => [
-      item.name.charAt(0).toUpperCase() +item.name.slice(1),
+      item.itemID,
+      item.name.charAt(0).toUpperCase() + item.name.slice(1),
+      item.description,
+      item.image,
+      item.saved
+    ])
+
+    // Remove duplicates if necessary
+    const uniqueItems = Array.from(new Set(formattedItems.map(JSON.stringify))).map(JSON.parse);
+
+    res.json(uniqueItems);
+  } catch (error) {
+    console.error("Error fetching items:", error);
+    res.status(500).json({ error: 'Failed to fetch items' });
+  }
+});
+
+app.post('/saveItem', cors(), async (req, res) => {
+  collection = client.db("BigRedBargains").collection("Listings");
+  const { itemId } = req.body
+
+  // Define the query
+  const query = { itemID: itemId };
+
+  const result = await collection.updateOne(query,
+    {
+      $set: {
+        saved: true
+      }
+    }
+  )
+  if (result.matchedCount === 0) {
+    return res.status(404).json({ error: 'Item not found' });
+  }
+
+  res.json({ message: 'Data updated successfully' });
+})
+
+app.get('/getSaved', cors(), async (req, res) => {
+  collection = client.db("BigRedBargains").collection("Listings");
+  try {
+    // Define the query
+    const query = { saved: true };
+
+    const items = await collection.find(query).toArray();
+
+    const formattedItems = items.map(item => [
+      item.itemID,
+      item.name.charAt(0).toUpperCase() + item.name.slice(1),
       item.description,
       item.image
     ])
@@ -86,8 +135,8 @@ app.get('/getItems', async (req, res) => {
   } catch (error) {
     console.error("Error fetching items:", error);
     res.status(500).json({ error: 'Failed to fetch items' });
-  } 
-});
+  }
+})
 
 async function startServer() {
   await connectToDatabase();

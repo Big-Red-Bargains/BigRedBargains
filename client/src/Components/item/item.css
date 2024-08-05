@@ -33,6 +33,7 @@ body {
     z-index: 2;
     height: 50px;
     width: 50px;
+    margin:1vw;
     object-fit: cover;
     filter: grayscale(1)
   }
@@ -47,9 +48,15 @@ body {
   }
 }
 
+.item:hover{
+  cursor:pointer;
+  /* opacity: 0.5;
+  transition:0.3s; */
+}
+
 .image {
   margin: 0;
-  height: 200px;
+  height: 300px;
   /* Fixed height for consistency */
   background-image: url("../../assets/images/defaultItem.png");
   background-size: cover;

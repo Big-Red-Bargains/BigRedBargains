@@ -21,11 +21,23 @@ export async function getItems() {
     const rawData = await response.json();
     // Transform the rawData into an array of objects
     const data = rawData.map(item => ({
-      name: item[0],
-      description: item[1],
-      image: item[2]
+      id: item[0],
+      name: item[1],
+      description: item[2],
+      image: item[3],
+      saved: item[4]
     }));
-    console.log(data);
+
+    // Set liked stated for all liked items
+    for (let i = 0; i < data.length; i++){
+      let val = data[i]
+      if (val.saved === true){
+        let item = document.querySelector(`[data-item-id="${val.id}"]`);
+        if(item){
+          item.classList.add('item-liked');
+        }
+      }
+    }
 
     return data;
   } catch (error) {
@@ -46,13 +58,39 @@ function Item({ searchQuery }) {
         console.error("Error fetching items:", error);
       }
     };
-
     fetchData();
   }, []); // Dependency array is empty, ensuring this effect runs only once on mount
 
-  const likeItem = (itemId) => {
+  async function likeItem(index, itemId) {
+    // Need to save/unsave this liked item into the DB
+
+    // Check if this id is in the currently saved items, if it is not:
+    const formData = {
+      itemId : data[index].id
+    };
+
+    try {
+      const response = await fetch("http://localhost:8000/saveItem", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json"
+        },
+        body: JSON.stringify(formData)
+      });
+  
+      if (!response.ok) {
+        console.error("Error fetching data:", response.statusText);
+      }
+    } catch (error) {
+      console.error("Error accessing endpoint:", error);
+    }
+
     // Placeholder for like functionality
-    console.log(`Item ${itemId} liked`);
+    let item = document.querySelector(`[data-item-id="${itemId}"]`);
+    if(item){
+      console.log("liked!")
+      item.classList.add('item-liked');
+    }
   };
 
   const filteredData = data.filter((item) =>
@@ -68,12 +106,13 @@ function Item({ searchQuery }) {
             <p>No items found.</p>
           ) : (
             filteredData.map((item, index) => (
-              <div className="item" key={index}> {/* Ideally, use a unique ID here */}
+              <div className="item" key={item.id}> 
                 <img
-                  className="love-icon"
+                  data-item-id={item.id}
+                  className="love-icon" 
                   src={heartIcon}
                   alt="loveIcon"
-                  onClick={() => likeItem(index)} // Consider using unique identifier if available
+                  onClick={() => likeItem(index, item.id)} // Consider using unique identifier if available
                 />
                 <div className="image">
                   <img src={item.image || sampleItem} alt={item.name || "Sample"} />

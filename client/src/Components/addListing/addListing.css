@@ -18,11 +18,12 @@ body {
   display: flex;
   align-items: center;
   justify-content: center;
+  z-index:4;
 
   .modal {
     position: relative;
     background-color: white;
-    min-height: 50%;
+    /* min-height: 50%; */
     height: fit-content;
     width: 50%;
     text-align: center;
@@ -34,10 +35,7 @@ body {
     }
 
     .add-listings-footer {
-      position: absolute;
       width: 100%;
-      right: 0;
-      bottom: 0;
       display: inline-block;
       justify-content: center;
       padding: 20px 0px;
